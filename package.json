@@ -1,0 +1,37 @@
+{
+  "name": "scholarship-hub",
+  "version": "1.0.0",
+  "description": "Comprehensive scholarship platform for students",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "build": "echo 'No build process needed for static site'",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "scholarships",
+    "education",
+    "funding",
+    "students",
+    "financial aid",
+    "10th",
+    "12th",
+    "graduation",
+    "undergraduate"
+  ],
+  "author": "Scholarship Hub Team",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "helmet": "^7.0.0",
+    "compression": "^1.7.4"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/scholarship-hub"
+  }
+}
