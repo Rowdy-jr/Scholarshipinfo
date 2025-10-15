@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scholarship Gateway | Your Future Starts Here</title>
+    <title>Scholarship Gateway | Find Scholarships for Your Education Level</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary: #6366f1;
@@ -134,9 +135,58 @@
             box-shadow: 0 8px 30px rgba(99, 102, 241, 0.6);
         }
 
+        /* Education Level Filter */
+        .filter-section {
+            padding: 2rem 5%;
+            text-align: center;
+        }
+
+        .filter-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        .filter-options {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .filter-option {
+            padding: 1.5rem 2rem;
+            min-width: 200px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .filter-option:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .filter-option.active {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .filter-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .filter-option h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
         /* Scholarship grid */
         .scholarships-section {
-            padding: 6rem 5%;
+            padding: 3rem 5%;
         }
 
         .section-title {
@@ -192,6 +242,23 @@
             line-height: 1.6;
             margin-bottom: 1.5rem;
             flex-grow: 1;
+        }
+
+        .scholarship-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .scholarship-level {
+            background: rgba(16, 185, 129, 0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+        }
+
+        .scholarship-deadline {
+            opacity: 0.7;
         }
 
         .apply-link {
@@ -306,6 +373,16 @@
             .section-title {
                 font-size: 2rem;
             }
+            
+            .filter-options {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .filter-option {
+                width: 100%;
+                max-width: 300px;
+            }
         }
     </style>
 </head>
@@ -330,9 +407,9 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Unlock Your Educational Journey With The Right Scholarship</h1>
-            <p>Discover verified scholarship opportunities from government and private institutions. We help Indian students find financial support for their academic dreams.</p>
-            <button class="cta-button">Explore Scholarships</button>
+            <h1>Find Scholarships For Your Education Level</h1>
+            <p>Discover verified scholarship opportunities tailored to your current educational stage. Filter by 10th, 12th, Undergraduate, or Graduate level to find the perfect financial support for your academic journey.</p>
+            <button class="cta-button" id="exploreBtn">Explore Scholarships</button>
         </div>
         
         <!-- Floating background elements -->
@@ -343,42 +420,43 @@
         </div>
     </section>
 
+    <!-- Education Level Filter -->
+    <section class="filter-section">
+        <h2 class="filter-title">Select Your Education Level</h2>
+        <div class="filter-options">
+            <div class="filter-option glass active" data-level="all">
+                <div class="filter-icon">ð</div>
+                <h3>All Scholarships</h3>
+                <p>View all available opportunities</p>
+            </div>
+            <div class="filter-option glass" data-level="10th">
+                <div class="filter-icon">ð</div>
+                <h3>10th Grade</h3>
+                <p>Scholarships after 10th grade</p>
+            </div>
+            <div class="filter-option glass" data-level="12th">
+                <div class="filter-icon">ð</div>
+                <h3>12th Grade</h3>
+                <p>Scholarships after 12th grade</p>
+            </div>
+            <div class="filter-option glass" data-level="undergraduate">
+                <div class="filter-icon">ð</div>
+                <h3>Undergraduate</h3>
+                <p>Scholarships for college students</p>
+            </div>
+            <div class="filter-option glass" data-level="graduate">
+                <div class="filter-icon">ð¯</div>
+                <h3>Graduate</h3>
+                <p>Scholarships for postgraduate studies</p>
+            </div>
+        </div>
+    </section>
+
     <!-- Scholarships Section -->
     <section id="scholarships" class="scholarships-section">
-        <h2 class="section-title">Featured Scholarships</h2>
-        <div class="scholarship-grid">
-            <!-- Scholarship Card 1 -->
-            <div class="scholarship-card glass">
-                <div class="scholarship-icon">ð</div>
-                <h3>National Scholarship Portal</h3>
-                <p>Centralized platform for various government scholarships. Apply for multiple schemes through a single application.</p>
-                <a href="https://scholarships.gov.in/" class="apply-link" target="_blank">
-                    Apply Now 
-                    <span>â</span>
-                </a>
-            </div>
-            
-            <!-- Scholarship Card 2 -->
-            <div class="scholarship-card glass">
-                <div class="scholarship-icon">ð</div>
-                <h3>Ministry of Education Scholarships</h3>
-                <p>Scholarships and fellowships offered by foreign countries under Cultural/Educational Exchange Programmes.</p>
-                <a href="https://proposal-sakshat.samarth.edu.in/" class="apply-link" target="_blank">
-                    Apply Now 
-                    <span>â</span>
-                </a>
-            </div>
-            
-            <!-- Scholarship Card 3 -->
-            <div class="scholarship-card glass">
-                <div class="scholarship-icon">ð¤</div>
-                <h3>ICCR Scholarships</h3>
-                <p>Scholarships by Indian Council for Cultural Relations for international studies and cultural exchange.</p>
-                <a href="https://a2ascholarships.iccr.gov.in/" class="apply-link" target="_blank">
-                    Apply Now 
-                    <span>â</span>
-                </a>
-            </div>
+        <h2 class="section-title">Available Scholarships</h2>
+        <div class="scholarship-grid" id="scholarshipContainer">
+            <!-- Scholarships will be dynamically loaded here -->
         </div>
     </section>
 
@@ -389,6 +467,243 @@
     </div>
 
     <script>
+        // Scholarship data organized by education level
+        const scholarships = {
+            "all": [
+                {
+                    id: 1,
+                    name: "National Scholarship Portal (NSP)",
+                    description: "Comprehensive online platform for various government scholarships. Apply for multiple schemes through a single application.",
+                    level: ["10th", "12th", "undergraduate", "graduate"],
+                    deadline: "Varies by scholarship",
+                    link: "https://scholarships.gov.in/",
+                    icon: "ð"
+                },
+                {
+                    id: 2,
+                    name: "Central Sector Scheme of Scholarships",
+                    description: "For meritorious students from economically weaker sections pursuing undergraduate and postgraduate studies.",
+                    level: ["undergraduate", "graduate"],
+                    deadline: "Usually October",
+                    link: "https://scholarships.gov.in/",
+                    icon: "ð°"
+                },
+                {
+                    id: 3,
+                    name: "Post Matric Scholarship Scheme for Minorities",
+                    description: "Financial assistance for minority students after matriculation to pursue higher education.",
+                    level: ["12th", "undergraduate", "graduate"],
+                    deadline: "Varies by state",
+                    link: "https://minorityaffairs.gov.in/",
+                    icon: "ð"
+                }
+            ],
+            "10th": [
+                {
+                    id: 4,
+                    name: "National Means-Cum-Merit Scholarship",
+                    description: "For economically disadvantaged students to continue education after class 8. Reduces dropout rates in secondary education.",
+                    level: ["10th"],
+                    deadline: "Usually December",
+                    link: "https://scholarships.gov.in/",
+                    icon: "ð"
+                },
+                {
+                    id: 5,
+                    name: "State Government Pre-Matric Scholarships",
+                    description: "Various state government scholarships for students studying in classes 9 and 10.",
+                    level: ["10th"],
+                    deadline: "Varies by state",
+                    link: "https://scholarships.gov.in/",
+                    icon: "ðï¸"
+                }
+            ],
+            "12th": [
+                {
+                    id: 6,
+                    name: "Kishore Vaigyanik Protsahan Yojana (KVPY)",
+                    description: "Prestigious national fellowship to encourage students to pursue research careers in science.",
+                    level: ["12th"],
+                    deadline: "Usually September",
+                    link: "http://kvpy.iisc.ernet.in/",
+                    icon: "ð¬"
+                },
+                {
+                    id: 7,
+                    name: "INSPIRE Scholarship for Higher Education",
+                    description: "For students who performed exceptionally in 12th grade to pursue higher education in basic and natural sciences.",
+                    level: ["12th"],
+                    deadline: "Usually July",
+                    link: "https://www.online-inspire.gov.in/",
+                    icon: "ð"
+                },
+                {
+                    id: 8,
+                    name: "AICTE Pragati Scholarship for Girls",
+                    description: "Empowers girls by providing financial support for technical education after 12th grade.",
+                    level: ["12th"],
+                    deadline: "Usually October",
+                    link: "https://www.aicte-india.org/",
+                    icon: "ð©âð"
+                }
+            ],
+            "undergraduate": [
+                {
+                    id: 9,
+                    name: "UGC-NET JRF Fellowship",
+                    description: "Prestigious fellowship for aspiring researchers and PhD students across all disciplines.",
+                    level: ["undergraduate", "graduate"],
+                    deadline: "Varies by cycle",
+                    link: "https://www.ugcnet.nta.nic.in/",
+                    icon: "ð"
+                },
+                {
+                    id: 10,
+                    name: "AICTE PG Scholarship",
+                    description: "For GATE/GPAT qualified students pursuing ME/MTech/MArch/MPharma programs.",
+                    level: ["undergraduate"],
+                    deadline: "Usually October",
+                    link: "https://www.aicte-india.org/",
+                    icon: "ð§"
+                },
+                {
+                    id: 11,
+                    name: "ONGC Scholarship for SC/ST Students",
+                    description: "Supports SC/ST students in professional courses like engineering, medicine, and management.",
+                    level: ["undergraduate"],
+                    deadline: "Usually September",
+                    link: "https://ongcscholar.org/",
+                    icon: "â½"
+                }
+            ],
+            "graduate": [
+                {
+                    id: 12,
+                    name: "Fulbright-Nehru Fellowships",
+                    description: "Prestigious scholarships for Indian students to pursue master's and doctoral studies in the USA.",
+                    level: ["graduate"],
+                    deadline: "Usually July",
+                    link: "https://www.usief.org.in/",
+                    icon: "ðºð¸"
+                },
+                {
+                    id: 13,
+                    name: "Commonwealth Scholarships",
+                    description: "For master's and PhD students from Commonwealth countries to study in the UK.",
+                    level: ["graduate"],
+                    deadline: "Usually December",
+                    link: "https://cscuk.fcdo.gov.uk/",
+                    icon: "ð¬ð§"
+                },
+                {
+                    id: 14,
+                    name: "DAAD Scholarships",
+                    description: "German scholarships for master's students and researchers across all academic disciplines.",
+                    level: ["graduate"],
+                    deadline: "Varies by program",
+                    link: "https://www.daad.de/en/",
+                    icon: "ð©ðª"
+                },
+                {
+                    id: 15,
+                    name: "Chevening Scholarships",
+                    description: "UK government scholarships for professionals seeking one-year master's programs.",
+                    level: ["graduate"],
+                    deadline: "Usually November",
+                    link: "https://www.chevening.org/",
+                    icon: "ð"
+                }
+            ]
+        };
+
+        // DOM elements
+        const filterOptions = document.querySelectorAll('.filter-option');
+        const scholarshipContainer = document.getElementById('scholarshipContainer');
+        const exploreBtn = document.getElementById('exploreBtn');
+
+        // Initialize with all scholarships
+        displayScholarships('all');
+
+        // Filter option click handlers
+        filterOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                // Remove active class from all options
+                filterOptions.forEach(opt => opt.classList.remove('active'));
+                
+                // Add active class to clicked option
+                this.classList.add('active');
+                
+                // Get the education level
+                const level = this.getAttribute('data-level');
+                
+                // Display scholarships for that level
+                displayScholarships(level);
+                
+                // Scroll to scholarships section
+                document.getElementById('scholarships').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Explore button click handler
+        exploreBtn.addEventListener('click', function() {
+            document.querySelector('.filter-section').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+
+        // Function to display scholarships based on level
+        function displayScholarships(level) {
+            // Clear the container
+            scholarshipContainer.innerHTML = '';
+            
+            // Get scholarships for the selected level
+            let scholarshipsToShow = [];
+            
+            if (level === 'all') {
+                // Combine all scholarships
+                Object.values(scholarships).forEach(arr => {
+                    scholarshipsToShow = scholarshipsToShow.concat(arr);
+                });
+            } else {
+                scholarshipsToShow = scholarships[level] || [];
+            }
+            
+            // Display each scholarship
+            scholarshipsToShow.forEach(scholarship => {
+                const card = document.createElement('div');
+                card.className = 'scholarship-card glass';
+                card.setAttribute('data-level', scholarship.level.join(' '));
+                
+                card.innerHTML = `
+                    <div class="scholarship-icon">${scholarship.icon}</div>
+                    <h3>${scholarship.name}</h3>
+                    <p>${scholarship.description}</p>
+                    <div class="scholarship-meta">
+                        <span class="scholarship-level">${scholarship.level.join(', ')}</span>
+                        <span class="scholarship-deadline">Deadline: ${scholarship.deadline}</span>
+                    </div>
+                    <a href="${scholarship.link}" class="apply-link" target="_blank">
+                        Apply Now 
+                        <span>â</span>
+                    </a>
+                `;
+                
+                scholarshipContainer.appendChild(card);
+            });
+            
+            // If no scholarships found
+            if (scholarshipsToShow.length === 0) {
+                scholarshipContainer.innerHTML = `
+                    <div class="no-results glass" style="grid-column: 1 / -1; text-align: center; padding: 3rem;">
+                        <h3>No scholarships found for this category</h3>
+                        <p>Try selecting a different education level or check back later for new opportunities.</p>
+                    </div>
+                `;
+            }
+        }
+
         // Header scroll effect
         window.addEventListener('scroll', function() {
             const header = document.querySelector('header');
@@ -447,35 +762,33 @@
                     }
                 });
             });
-            
-            // CTA button click handler
-            document.querySelector('.cta-button').addEventListener('click', function() {
-                document.getElementById('scholarships').scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
         });
 
         // Add magnetic cursor effect to scholarship cards
-        document.querySelectorAll('.scholarship-card').forEach(card => {
-            card.addEventListener('mousemove', function(e) {
-                const rect = this.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
+        document.addEventListener('mouseover', function(e) {
+            if (e.target.closest('.scholarship-card')) {
+                const card = e.target.closest('.scholarship-card');
+                card.addEventListener('mousemove', function(e) {
+                    const rect = this.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    const angleX = (y - centerY) / 10;
+                    const angleY = (centerX - x) / 10;
+                    
+                    this.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) translateY(-10px)`;
+                });
                 
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                
-                const angleX = (y - centerY) / 10;
-                const angleY = (centerX - x) / 10;
-                
-                this.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) translateY(-10px)`;
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(-10px)';
-            });
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(-10px)';
+                });
+             }
         });
     </script>
 </body>
 </html>
+            
+ 
