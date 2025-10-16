@@ -177,6 +177,7 @@
         .filter-icon {
             font-size: 2.5rem;
             margin-bottom: 1rem;
+            color: var(--accent);
         }
 
         .filter-option h3 {
@@ -229,6 +230,7 @@
             justify-content: center;
             margin-bottom: 1.5rem;
             font-size: 1.5rem;
+            color: white;
         }
 
         .scholarship-card h3 {
@@ -360,6 +362,37 @@
             }
         }
 
+        /* Footer */
+        footer {
+            padding: 3rem 5%;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
         /* Responsive design */
         @media (max-width: 768px) {
             .hero h1 {
@@ -425,27 +458,27 @@
         <h2 class="filter-title">Select Your Education Level</h2>
         <div class="filter-options">
             <div class="filter-option glass active" data-level="all">
-                <div class="filter-icon">ð</div>
+                <div class="filter-icon"><i class="fas fa-graduation-cap"></i></div>
                 <h3>All Scholarships</h3>
                 <p>View all available opportunities</p>
             </div>
             <div class="filter-option glass" data-level="10th">
-                <div class="filter-icon">ð</div>
+                <div class="filter-icon"><i class="fas fa-book"></i></div>
                 <h3>10th Grade</h3>
                 <p>Scholarships after 10th grade</p>
             </div>
             <div class="filter-option glass" data-level="12th">
-                <div class="filter-icon">ð</div>
+                <div class="filter-icon"><i class="fas fa-file-alt"></i></div>
                 <h3>12th Grade</h3>
                 <p>Scholarships after 12th grade</p>
             </div>
             <div class="filter-option glass" data-level="undergraduate">
-                <div class="filter-icon">ð</div>
+                <div class="filter-icon"><i class="fas fa-backpack"></i></div>
                 <h3>Undergraduate</h3>
                 <p>Scholarships for college students</p>
             </div>
             <div class="filter-option glass" data-level="graduate">
-                <div class="filter-icon">ð¯</div>
+                <div class="filter-icon"><i class="fas fa-bullseye"></i></div>
                 <h3>Graduate</h3>
                 <p>Scholarships for postgraduate studies</p>
             </div>
@@ -477,7 +510,7 @@
                     level: ["10th", "12th", "undergraduate", "graduate"],
                     deadline: "Varies by scholarship",
                     link: "https://scholarships.gov.in/",
-                    icon: "ð"
+                    icon: "<i class='fas fa-globe'></i>"
                 },
                 {
                     id: 2,
@@ -486,7 +519,7 @@
                     level: ["undergraduate", "graduate"],
                     deadline: "Usually October",
                     link: "https://scholarships.gov.in/",
-                    icon: "ð°"
+                    icon: "<i class='fas fa-money-bill-wave'></i>"
                 },
                 {
                     id: 3,
@@ -495,7 +528,7 @@
                     level: ["12th", "undergraduate", "graduate"],
                     deadline: "Varies by state",
                     link: "https://minorityaffairs.gov.in/",
-                    icon: "ð"
+                    icon: "<i class='fas fa-mosque'></i>"
                 }
             ],
             "10th": [
@@ -506,7 +539,7 @@
                     level: ["10th"],
                     deadline: "Usually December",
                     link: "https://scholarships.gov.in/",
-                    icon: "ð"
+                    icon: "<i class='fas fa-book-reader'></i>"
                 },
                 {
                     id: 5,
@@ -515,7 +548,7 @@
                     level: ["10th"],
                     deadline: "Varies by state",
                     link: "https://scholarships.gov.in/",
-                    icon: "ðï¸"
+                    icon: "<i class='fas fa-landmark'></i>"
                 }
             ],
             "12th": [
@@ -526,7 +559,7 @@
                     level: ["12th"],
                     deadline: "Usually September",
                     link: "http://kvpy.iisc.ernet.in/",
-                    icon: "ð¬"
+                    icon: "<i class='fas fa-microscope'></i>"
                 },
                 {
                     id: 7,
@@ -535,7 +568,7 @@
                     level: ["12th"],
                     deadline: "Usually July",
                     link: "https://www.online-inspire.gov.in/",
-                    icon: "ð"
+                    icon: "<i class='fas fa-star'></i>"
                 },
                 {
                     id: 8,
@@ -544,7 +577,7 @@
                     level: ["12th"],
                     deadline: "Usually October",
                     link: "https://www.aicte-india.org/",
-                    icon: "ð©âð"
+                    icon: "<i class='fas fa-female'></i>"
                 }
             ],
             "undergraduate": [
@@ -555,7 +588,7 @@
                     level: ["undergraduate", "graduate"],
                     deadline: "Varies by cycle",
                     link: "https://www.ugcnet.nta.nic.in/",
-                    icon: "ð"
+                    icon: "<i class='fas fa-graduation-cap'></i>"
                 },
                 {
                     id: 10,
@@ -564,7 +597,7 @@
                     level: ["undergraduate"],
                     deadline: "Usually October",
                     link: "https://www.aicte-india.org/",
-                    icon: "ð§"
+                    icon: "<i class='fas fa-tools'></i>"
                 },
                 {
                     id: 11,
@@ -573,7 +606,7 @@
                     level: ["undergraduate"],
                     deadline: "Usually September",
                     link: "https://ongcscholar.org/",
-                    icon: "â½"
+                    icon: "<i class='fas fa-gas-pump'></i>"
                 }
             ],
             "graduate": [
@@ -584,7 +617,7 @@
                     level: ["graduate"],
                     deadline: "Usually July",
                     link: "https://www.usief.org.in/",
-                    icon: "ðºð¸"
+                    icon: "<i class='fas fa-flag-usa'></i>"
                 },
                 {
                     id: 13,
@@ -593,7 +626,7 @@
                     level: ["graduate"],
                     deadline: "Usually December",
                     link: "https://cscuk.fcdo.gov.uk/",
-                    icon: "ð¬ð§"
+                    icon: "<i class='fas fa-flag-uk'></i>"
                 },
                 {
                     id: 14,
@@ -602,7 +635,7 @@
                     level: ["graduate"],
                     deadline: "Varies by program",
                     link: "https://www.daad.de/en/",
-                    icon: "ð©ðª"
+                    icon: "<i class='fas fa-flag'></i>"
                 },
                 {
                     id: 15,
@@ -611,7 +644,7 @@
                     level: ["graduate"],
                     deadline: "Usually November",
                     link: "https://www.chevening.org/",
-                    icon: "ð"
+                    icon: "<i class='fas fa-crown'></i>"
                 }
             ]
         };
@@ -686,7 +719,7 @@
                     </div>
                     <a href="${scholarship.link}" class="apply-link" target="_blank">
                         Apply Now 
-                        <span>â</span>
+                        <i class="fas fa-arrow-right"></i>
                     </a>
                 `;
                 
@@ -785,10 +818,8 @@
                 card.addEventListener('mouseleave', function() {
                     this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(-10px)';
                 });
-             }
+            }
         });
     </script>
 </body>
 </html>
-            
- 
