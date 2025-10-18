@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scholarship Gateway | Find Scholarships for Your Education Level</title>
+    <title>Scholarship Gateway | Find Scholarships for Indian Students</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -13,8 +13,6 @@
             --accent: #10b981;
             --glass: rgba(255, 255, 255, 0.1);
             --glass-border: rgba(255, 255, 255, 0.2);
-            --text-primary: #1f2937;
-            --text-secondary: #6b7280;
             --background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
 
@@ -22,38 +20,32 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', 'Segoe UI', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
             background: var(--background);
             color: white;
             min-height: 100vh;
-            overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        /* Glass morphism base styles */
-        .glass {
-            background: var(--glass);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
         }
 
-        /* Header styles */
+        /* Header */
         header {
-            padding: 2rem 5%;
-            position: fixed;
-            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            position: sticky;
+            top: 20px;
             z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        header.scrolled {
-            background: rgba(99, 102, 241, 0.9);
-            backdrop-filter: blur(20px);
-            padding: 1rem 5%;
         }
 
         .nav-container {
@@ -74,752 +66,616 @@
             background: var(--secondary);
             width: 40px;
             height: 40px;
-            border-radius: 12px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            transform: rotate(45deg);
+            font-weight: bold;
         }
 
-        .logo-icon span {
-            transform: rotate(-45deg);
-            font-weight: 900;
-        }
-
-        /* Hero section */
-        .hero {
-            min-height: 100vh;
+        nav {
             display: flex;
-            align-items: center;
-            padding: 0 5%;
-            position: relative;
-        }
-
-        .hero-content {
-            max-width: 600px;
-            z-index: 2;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #fff 0%, #c7d2fe 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            line-height: 1.6;
-        }
-
-        .cta-button {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 16px;
-            color: white;
-            font-weight: 600;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.6);
-        }
-
-        /* Education Level Filter */
-        .filter-section {
-            padding: 2rem 5%;
-            text-align: center;
-        }
-
-        .filter-title {
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            font-weight: 700;
-        }
-
-        .filter-options {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-        }
-
-        .filter-option {
-            padding: 1.5rem 2rem;
-            min-width: 200px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-
-        .filter-option:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        .filter-option.active {
-            background: rgba(255, 255, 255, 0.2);
-            border: 2px solid var(--accent);
-            transform: translateY(-5px);
-        }
-
-        .filter-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--accent);
-        }
-
-        .filter-option h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Scholarship grid */
-        .scholarships-section {
-            padding: 3rem 5%;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 3rem;
-            background: linear-gradient(135deg, #fff 0%, #c7d2fe 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .scholarship-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 2rem;
         }
 
-        .scholarship-card {
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        /* Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+        }
+
+        .content-area {
+            background: rgba(255, 255, 255, 0.05);
             padding: 2rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            height: 100%;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+
+        .sidebar {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 15px;
+            height: fit-content;
+        }
+
+        /* Ad Containers */
+        .ad-container {
+            margin: 2rem auto;
+            text-align: center;
+        }
+
+        .ad-label {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .ad-banner {
+            width: 100%;
+            height: 90px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .ad-square {
+            width: 100%;
+            height: 250px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .ad-placeholder {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff, #c7d2fe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Filter Section */
+        .filter-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .filter-option {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .filter-option:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .filter-option.active {
+            border-color: var(--accent);
+            background: rgba(16, 185, 129, 0.2);
+        }
+
+        .filter-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        /* Scholarship Grid */
+        .scholarship-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .scholarship-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
         }
 
         .scholarship-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
             background: rgba(255, 255, 255, 0.15);
         }
 
         .scholarship-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 16px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
+            margin-bottom: 1rem;
             color: white;
         }
 
-        .scholarship-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .scholarship-card p {
-            opacity: 0.8;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-            flex-grow: 1;
-        }
-
-        .scholarship-meta {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 1.5rem;
-            font-size: 0.9rem;
-        }
-
-        .scholarship-level {
-            background: rgba(16, 185, 129, 0.2);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-        }
-
-        .scholarship-deadline {
-            opacity: 0.7;
-        }
-
         .apply-link {
-            color: var(--accent);
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
             text-decoration: none;
+            margin-top: 1rem;
             font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
+            transition: background 0.3s;
         }
 
         .apply-link:hover {
-            gap: 1rem;
+            background: #0da271;
         }
 
-        /* Floating elements */
-        .floating-elements {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
+        /* Legal Pages */
+        .legal-content {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
         }
 
-        .floating-element {
-            position: absolute;
-            border-radius: 50%;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
-            animation: float 20s infinite linear;
+        .legal-content h1 {
+            margin-bottom: 2rem;
+            color: var(--accent);
         }
 
-        .element-1 {
-            width: 300px;
-            height: 300px;
-            top: 10%;
-            right: 10%;
-            animation-delay: 0s;
+        .legal-content h2 {
+            margin: 1.5rem 0 1rem 0;
+            color: var(--accent);
         }
 
-        .element-2 {
-            width: 150px;
-            height: 150px;
-            bottom: 20%;
-            left: 10%;
-            animation-delay: -5s;
+        .legal-content p {
+            margin-bottom: 1rem;
         }
 
-        .element-3 {
-            width: 200px;
-            height: 200px;
-            top: 50%;
-            right: 20%;
-            animation-delay: -10s;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0) rotate(0deg);
-            }
-            100% {
-                transform: translateY(-100px) rotate(360deg);
-            }
-        }
-
-        /* Status indicator */
-        .status-indicator {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .status-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: var(--accent);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.5;
-            }
-            100% {
-                opacity: 1;
-            }
+        .legal-content ul {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
         }
 
         /* Footer */
         footer {
-            padding: 3rem 5%;
             text-align: center;
+            padding: 2rem;
             margin-top: 3rem;
-        }
-
-        .footer-content {
-            max-width: 800px;
-            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
         }
 
         .footer-links {
             display: flex;
             justify-content: center;
-            flex-wrap: wrap;
             gap: 2rem;
-            margin: 2rem 0;
+            margin: 1rem 0;
+            flex-wrap: wrap;
         }
 
         .footer-links a {
             color: white;
             text-decoration: none;
             opacity: 0.8;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.3s;
         }
 
         .footer-links a:hover {
             opacity: 1;
         }
 
-        /* Responsive design */
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #0da271;
+        }
+
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .scholarship-grid {
+            .main-content {
                 grid-template-columns: 1fr;
             }
             
-            .section-title {
+            .hero h1 {
                 font-size: 2rem;
             }
             
             .filter-options {
-                flex-direction: column;
-                align-items: center;
+                grid-template-columns: 1fr;
             }
             
-            .filter-option {
-                width: 100%;
-                max-width: 300px;
+            nav {
+                flex-direction: column;
+                gap: 1rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="glass">
-        <div class="nav-container">
-            <div class="logo">
-                <div class="logo-icon">
-                    <span>SG</span>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="nav-container">
+                <div class="logo">
+                    <div class="logo-icon">SG</div>
+                    ScholarshipGateway
                 </div>
-                ScholarshipGateway
+                <nav>
+                    <a href="#" onclick="showSection('home')">Home</a>
+                    <a href="#" onclick="showSection('scholarships')">Scholarships</a>
+                    <a href="#" onclick="showSection('privacy')">Privacy Policy</a>
+                    <a href="#" onclick="showSection('terms')">Terms of Service</a>
+                    <a href="#" onclick="showSection('contact')">Contact</a>
+                </nav>
             </div>
-            <nav>
-                <a href="#scholarships" style="color: white; text-decoration: none; margin-left: 2rem;">Scholarships</a>
-                <a href="#about" style="color: white; text-decoration: none; margin-left: 2rem;">About</a>
-                <a href="#contact" style="color: white; text-decoration: none; margin-left: 2rem;">Contact</a>
-            </nav>
-        </div>
-    </header>
+        </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Find Scholarships For Your Education Level</h1>
-            <p>Discover verified scholarship opportunities tailored to your current educational stage. Filter by 10th, 12th, Undergraduate, or Graduate level to find the perfect financial support for your academic journey.</p>
-            <button class="cta-button" id="exploreBtn">Explore Scholarships</button>
-        </div>
-        
-        <!-- Floating background elements -->
-        <div class="floating-elements">
-            <div class="floating-element element-1"></div>
-            <div class="floating-element element-2"></div>
-            <div class="floating-element element-3"></div>
-        </div>
-    </section>
+        <!-- Home Section -->
+        <section id="home-section" class="content-area">
+            <!-- Banner Ad -->
+            <div class="ad-container">
+                <div class="ad-label">Advertisement</div>
+                <div class="ad-banner">
+                    <div class="ad-placeholder">
+                        Google AdSense Banner (728x90)
+                    </div>
+                </div>
+            </div>
 
-    <!-- Education Level Filter -->
-    <section class="filter-section">
-        <h2 class="filter-title">Select Your Education Level</h2>
-        <div class="filter-options">
-            <div class="filter-option glass active" data-level="all">
-                <div class="filter-icon"><i class="fas fa-graduation-cap"></i></div>
-                <h3>All Scholarships</h3>
-                <p>View all available opportunities</p>
+            <!-- Hero Section -->
+            <div class="hero">
+                <h1>Find Scholarships for Indian Students</h1>
+                <p>Discover 1000+ verified scholarships for 10th, 12th, undergraduate and graduate students</p>
             </div>
-            <div class="filter-option glass" data-level="10th">
-                <div class="filter-icon"><i class="fas fa-book"></i></div>
-                <h3>10th Grade</h3>
-                <p>Scholarships after 10th grade</p>
-            </div>
-            <div class="filter-option glass" data-level="12th">
-                <div class="filter-icon"><i class="fas fa-file-alt"></i></div>
-                <h3>12th Grade</h3>
-                <p>Scholarships after 12th grade</p>
-            </div>
-            <div class="filter-option glass" data-level="undergraduate">
-                <div class="filter-icon"><i class="fas fa-backpack"></i></div>
-                <h3>Undergraduate</h3>
-                <p>Scholarships for college students</p>
-            </div>
-            <div class="filter-option glass" data-level="graduate">
-                <div class="filter-icon"><i class="fas fa-bullseye"></i></div>
-                <h3>Graduate</h3>
-                <p>Scholarships for postgraduate studies</p>
-            </div>
-        </div>
-    </section>
 
-    <!-- Scholarships Section -->
-    <section id="scholarships" class="scholarships-section">
-        <h2 class="section-title">Available Scholarships</h2>
-        <div class="scholarship-grid" id="scholarshipContainer">
-            <!-- Scholarships will be dynamically loaded here -->
-        </div>
-    </section>
+            <!-- Square Ad -->
+            <div class="ad-container">
+                <div class="ad-label">Sponsored</div>
+                <div class="ad-square">
+                    <div class="ad-placeholder">
+                        Google AdSense Square (300x250)
+                    </div>
+                </div>
+            </div>
 
-    <!-- Status Indicator -->
-    <div class="status-indicator glass">
-        <div class="status-dot"></div>
-        <span>Server Active</span>
+            <!-- Filter Section -->
+            <div class="filter-section">
+                <h2>Select Your Education Level</h2>
+                <div class="filter-options">
+                    <div class="filter-option active" onclick="filterScholarships('all')">
+                        <div class="filter-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <h3>All Scholarships</h3>
+                        <p>View all opportunities</p>
+                    </div>
+                    <div class="filter-option" onclick="filterScholarships('10th')">
+                        <div class="filter-icon"><i class="fas fa-book"></i></div>
+                        <h3>10th Grade</h3>
+                        <p>After 10th grade</p>
+                    </div>
+                    <div class="filter-option" onclick="filterScholarships('12th')">
+                        <div class="filter-icon"><i class="fas fa-file-alt"></i></div>
+                        <h3>12th Grade</h3>
+                        <p>After 12th grade</p>
+                    </div>
+                    <div class="filter-option" onclick="filterScholarships('undergraduate')">
+                        <div class="filter-icon"><i class="fas fa-user-graduate"></i></div>
+                        <h3>Undergraduate</h3>
+                        <p>College students</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scholarships Grid -->
+            <div id="scholarships-container">
+                <h2>Available Scholarships</h2>
+                <div class="scholarship-grid">
+                    <!-- Scholarships will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Privacy Policy Section -->
+        <section id="privacy-section" class="legal-content" style="display: none;">
+            <h1>Privacy Policy</h1>
+            
+            <h2>Information We Collect</h2>
+            <p>We collect information that you provide directly to us, including:</p>
+            <ul>
+                <li>Name and email address when you contact us</li>
+                <li>Information about your use of our website</li>
+                <li>Device and browser information</li>
+            </ul>
+
+            <h2>How We Use Your Information</h2>
+            <p>We use the information we collect to:</p>
+            <ul>
+                <li>Provide and improve our scholarship services</li>
+                <li>Respond to your inquiries</li>
+                <li>Send you scholarship updates (if requested)</li>
+                <li>Analyze website usage and performance</li>
+            </ul>
+
+            <h2>Google AdSense</h2>
+            <p>We use Google AdSense to display advertisements on our website. Google AdSense may use cookies and tracking technologies to serve personalized ads based on your interests.</p>
+
+            <h2>Contact Information</h2>
+            <p>If you have any questions about this Privacy Policy, please contact us at: <strong>firesk92@gmail.com</strong></p>
+
+            <p><em>Last updated: December 2024</em></p>
+        </section>
+
+        <!-- Terms of Service Section -->
+        <section id="terms-section" class="legal-content" style="display: none;">
+            <h1>Terms of Service</h1>
+
+            <h2>Acceptance of Terms</h2>
+            <p>By accessing and using ScholarshipGateway, you accept and agree to be bound by these Terms of Service.</p>
+
+            <h2>Use of Service</h2>
+            <p>Our service provides scholarship information for educational purposes. We strive to ensure information accuracy but cannot guarantee completeness.</p>
+
+            <h2>User Responsibilities</h2>
+            <p>Users are responsible for:</p>
+            <ul>
+                <li>Verifying scholarship details before applying</li>
+                <li>Meeting application deadlines</li>
+                <li>Providing accurate information when contacting us</li>
+            </ul>
+
+            <h2>Intellectual Property</h2>
+            <p>All content on this website is protected by copyright laws. You may not reproduce or distribute content without permission.</p>
+
+            <h2>Limitation of Liability</h2>
+            <p>We are not liable for any decisions made based on scholarship information provided on this website.</p>
+
+            <h2>Contact</h2>
+            <p>For questions about these Terms: <strong>firesk92@gmail.com</strong></p>
+
+            <p><em>Last updated: December 2024</em></p>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact-section" class="content-area" style="display: none;">
+            <h1>Contact Us</h1>
+            <p>Have questions about scholarships? Get in touch with us!</p>
+
+            <div class="contact-form">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" placeholder="Tell us about your scholarship query..."></textarea>
+                </div>
+                <button class="submit-btn" onclick="sendMessage()">Send Message</button>
+            </div>
+
+            <div style="margin-top: 2rem; text-align: center;">
+                <h3>Direct Email</h3>
+                <p>You can also reach us directly at: <strong>firesk92@gmail.com</strong></p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>Scholarship Gateway &copy; 2024. Helping Indian students achieve their dreams.</p>
+            <div class="footer-links">
+                <a href="#" onclick="showSection('privacy')">Privacy Policy</a>
+                <a href="#" onclick="showSection('terms')">Terms of Service</a>
+                <a href="#" onclick="showSection('contact')">Contact Us</a>
+            </div>
+            <p>Email: firesk92@gmail.com</p>
+        </footer>
     </div>
 
     <script>
-        // Scholarship data organized by education level
+        // Scholarship data
         const scholarships = {
             "all": [
                 {
-                    id: 1,
                     name: "National Scholarship Portal (NSP)",
                     description: "Comprehensive online platform for various government scholarships. Apply for multiple schemes through a single application.",
-                    level: ["10th", "12th", "undergraduate", "graduate"],
-                    deadline: "Varies by scholarship",
+                    level: "All Levels",
+                    deadline: "Varies",
                     link: "https://scholarships.gov.in/",
                     icon: "<i class='fas fa-globe'></i>"
                 },
                 {
-                    id: 2,
-                    name: "Central Sector Scheme of Scholarships",
-                    description: "For meritorious students from economically weaker sections pursuing undergraduate and postgraduate studies.",
-                    level: ["undergraduate", "graduate"],
-                    deadline: "Usually October",
+                    name: "Central Sector Scheme",
+                    description: "For meritorious students from economically weaker sections pursuing higher education.",
+                    level: "Undergraduate, Graduate",
+                    deadline: "October",
                     link: "https://scholarships.gov.in/",
                     icon: "<i class='fas fa-money-bill-wave'></i>"
-                },
-                {
-                    id: 3,
-                    name: "Post Matric Scholarship Scheme for Minorities",
-                    description: "Financial assistance for minority students after matriculation to pursue higher education.",
-                    level: ["12th", "undergraduate", "graduate"],
-                    deadline: "Varies by state",
-                    link: "https://minorityaffairs.gov.in/",
-                    icon: "<i class='fas fa-mosque'></i>"
                 }
             ],
             "10th": [
                 {
-                    id: 4,
                     name: "National Means-Cum-Merit Scholarship",
-                    description: "For economically disadvantaged students to continue education after class 8. Reduces dropout rates in secondary education.",
-                    level: ["10th"],
-                    deadline: "Usually December",
+                    description: "For economically disadvantaged students to continue education after class 8.",
+                    level: "10th Grade",
+                    deadline: "December",
                     link: "https://scholarships.gov.in/",
                     icon: "<i class='fas fa-book-reader'></i>"
-                },
-                {
-                    id: 5,
-                    name: "State Government Pre-Matric Scholarships",
-                    description: "Various state government scholarships for students studying in classes 9 and 10.",
-                    level: ["10th"],
-                    deadline: "Varies by state",
-                    link: "https://scholarships.gov.in/",
-                    icon: "<i class='fas fa-landmark'></i>"
                 }
             ],
             "12th": [
                 {
-                    id: 6,
-                    name: "Kishore Vaigyanik Protsahan Yojana (KVPY)",
+                    name: "KVPY Fellowship",
                     description: "Prestigious national fellowship to encourage students to pursue research careers in science.",
-                    level: ["12th"],
-                    deadline: "Usually September",
+                    level: "12th Grade",
+                    deadline: "September",
                     link: "http://kvpy.iisc.ernet.in/",
                     icon: "<i class='fas fa-microscope'></i>"
-                },
-                {
-                    id: 7,
-                    name: "INSPIRE Scholarship for Higher Education",
-                    description: "For students who performed exceptionally in 12th grade to pursue higher education in basic and natural sciences.",
-                    level: ["12th"],
-                    deadline: "Usually July",
-                    link: "https://www.online-inspire.gov.in/",
-                    icon: "<i class='fas fa-star'></i>"
-                },
-                {
-                    id: 8,
-                    name: "AICTE Pragati Scholarship for Girls",
-                    description: "Empowers girls by providing financial support for technical education after 12th grade.",
-                    level: ["12th"],
-                    deadline: "Usually October",
-                    link: "https://www.aicte-india.org/",
-                    icon: "<i class='fas fa-female'></i>"
                 }
             ],
             "undergraduate": [
                 {
-                    id: 9,
-                    name: "UGC-NET JRF Fellowship",
-                    description: "Prestigious fellowship for aspiring researchers and PhD students across all disciplines.",
-                    level: ["undergraduate", "graduate"],
-                    deadline: "Varies by cycle",
-                    link: "https://www.ugcnet.nta.nic.in/",
-                    icon: "<i class='fas fa-graduation-cap'></i>"
-                },
-                {
-                    id: 10,
-                    name: "AICTE PG Scholarship",
-                    description: "For GATE/GPAT qualified students pursuing ME/MTech/MArch/MPharma programs.",
-                    level: ["undergraduate"],
-                    deadline: "Usually October",
+                    name: "AICTE Pragati Scholarship",
+                    description: "Empowers girls by providing financial support for technical education.",
+                    level: "Undergraduate",
+                    deadline: "October",
                     link: "https://www.aicte-india.org/",
-                    icon: "<i class='fas fa-tools'></i>"
-                },
-                {
-                    id: 11,
-                    name: "ONGC Scholarship for SC/ST Students",
-                    description: "Supports SC/ST students in professional courses like engineering, medicine, and management.",
-                    level: ["undergraduate"],
-                    deadline: "Usually September",
-                    link: "https://ongcscholar.org/",
-                    icon: "<i class='fas fa-gas-pump'></i>"
-                }
-            ],
-            "graduate": [
-                {
-                    id: 12,
-                    name: "Fulbright-Nehru Fellowships",
-                    description: "Prestigious scholarships for Indian students to pursue master's and doctoral studies in the USA.",
-                    level: ["graduate"],
-                    deadline: "Usually July",
-                    link: "https://www.usief.org.in/",
-                    icon: "<i class='fas fa-flag-usa'></i>"
-                },
-                {
-                    id: 13,
-                    name: "Commonwealth Scholarships",
-                    description: "For master's and PhD students from Commonwealth countries to study in the UK.",
-                    level: ["graduate"],
-                    deadline: "Usually December",
-                    link: "https://cscuk.fcdo.gov.uk/",
-                    icon: "<i class='fas fa-flag-uk'></i>"
-                },
-                {
-                    id: 14,
-                    name: "DAAD Scholarships",
-                    description: "German scholarships for master's students and researchers across all academic disciplines.",
-                    level: ["graduate"],
-                    deadline: "Varies by program",
-                    link: "https://www.daad.de/en/",
-                    icon: "<i class='fas fa-flag'></i>"
-                },
-                {
-                    id: 15,
-                    name: "Chevening Scholarships",
-                    description: "UK government scholarships for professionals seeking one-year master's programs.",
-                    level: ["graduate"],
-                    deadline: "Usually November",
-                    link: "https://www.chevening.org/",
-                    icon: "<i class='fas fa-crown'></i>"
+                    icon: "<i class='fas fa-female'></i>"
                 }
             ]
         };
 
-        // DOM elements
-        const filterOptions = document.querySelectorAll('.filter-option');
-        const scholarshipContainer = document.getElementById('scholarshipContainer');
-        const exploreBtn = document.getElementById('exploreBtn');
-
-        // Initialize with all scholarships
-        displayScholarships('all');
-
-        // Filter option click handlers
-        filterOptions.forEach(option => {
-            option.addEventListener('click', function() {
-                // Remove active class from all options
-                filterOptions.forEach(opt => opt.classList.remove('active'));
-                
-                // Add active class to clicked option
-                this.classList.add('active');
-                
-                // Get the education level
-                const level = this.getAttribute('data-level');
-                
-                // Display scholarships for that level
-                displayScholarships(level);
-                
-                // Scroll to scholarships section
-                document.getElementById('scholarships').scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Explore button click handler
-        exploreBtn.addEventListener('click', function() {
-            document.querySelector('.filter-section').scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
-
-        // Function to display scholarships based on level
-        function displayScholarships(level) {
-            // Clear the container
-            scholarshipContainer.innerHTML = '';
+        // Navigation functions
+        function showSection(section) {
+            // Hide all sections
+            document.getElementById('home-section').style.display = 'none';
+            document.getElementById('privacy-section').style.display = 'none';
+            document.getElementById('terms-section').style.display = 'none';
+            document.getElementById('contact-section').style.display = 'none';
             
-            // Get scholarships for the selected level
-            let scholarshipsToShow = [];
+            // Show selected section
+            document.getElementById(section + '-section').style.display = 'block';
             
-            if (level === 'all') {
-                // Combine all scholarships
-                Object.values(scholarships).forEach(arr => {
-                    scholarshipsToShow = scholarshipsToShow.concat(arr);
-                });
-            } else {
-                scholarshipsToShow = scholarships[level] || [];
+            // If showing scholarships, load them
+            if (section === 'home' || section === 'scholarships') {
+                filterScholarships('all');
             }
+        }
+
+        function filterScholarships(level) {
+            // Update active filter
+            document.querySelectorAll('.filter-option').forEach(opt => {
+                opt.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
             
-            // Display each scholarship
-            scholarshipsToShow.forEach(scholarship => {
-                const card = document.createElement('div');
-                card.className = 'scholarship-card glass';
-                card.setAttribute('data-level', scholarship.level.join(' '));
-                
-                card.innerHTML = `
+            // Display scholarships
+            const container = document.querySelector('.scholarship-grid');
+            const scholarshipsToShow = level === 'all' ? 
+                [...scholarships['all'], ...scholarships['10th'], ...scholarships['12th'], ...scholarships['undergraduate']] : 
+                scholarships[level];
+            
+            container.innerHTML = scholarshipsToShow.map(scholarship => `
+                <div class="scholarship-card">
                     <div class="scholarship-icon">${scholarship.icon}</div>
                     <h3>${scholarship.name}</h3>
                     <p>${scholarship.description}</p>
-                    <div class="scholarship-meta">
-                        <span class="scholarship-level">${scholarship.level.join(', ')}</span>
-                        <span class="scholarship-deadline">Deadline: ${scholarship.deadline}</span>
-                    </div>
-                    <a href="${scholarship.link}" class="apply-link" target="_blank">
-                        Apply Now 
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                `;
-                
-                scholarshipContainer.appendChild(card);
-            });
+                    <p><strong>Level:</strong> ${scholarship.level}</p>
+                    <p><strong>Deadline:</strong> ${scholarship.deadline}</p>
+                    <a href="${scholarship.link}" class="apply-link" target="_blank">Apply Now</a>
+                </div>
+            `).join('');
+        }
+
+        function sendMessage() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
             
-            // If no scholarships found
-            if (scholarshipsToShow.length === 0) {
-                scholarshipContainer.innerHTML = `
-                    <div class="no-results glass" style="grid-column: 1 / -1; text-align: center; padding: 3rem;">
-                        <h3>No scholarships found for this category</h3>
-                        <p>Try selecting a different education level or check back later for new opportunities.</p>
-                    </div>
-                `;
-            }
-        }
-
-        // Header scroll effect
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
+            if (name && email && message) {
+                alert('Thank you for your message! We will respond to firesk92@gmail.com shortly.');
+                // In a real implementation, this would send to your email
+                document.getElementById('name').value = '';
+                document.getElementById('email').value = '';
+                document.getElementById('message').value = '';
             } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // Auto-ping service to keep Render instance active
-        function keepAlive() {
-            // Ping the current domain every 5 minutes
-            fetch(window.location.origin)
-                .then(response => {
-                    console.log('Ping successful -', new Date().toLocaleTimeString());
-                    updateStatusIndicator('active');
-                })
-                .catch(error => {
-                    console.log('Ping failed -', new Date().toLocaleTimeString());
-                    updateStatusIndicator('inactive');
-                });
-        }
-
-        function updateStatusIndicator(status) {
-            const indicator = document.querySelector('.status-indicator span');
-            const dot = document.querySelector('.status-dot');
-            
-            if (status === 'active') {
-                indicator.textContent = 'Server Active';
-                dot.style.background = '#10b981';
-            } else {
-                indicator.textContent = 'Server Inactive';
-                dot.style.background = '#ef4444';
+                alert('Please fill in all fields.');
             }
         }
 
-        // Start pinging when page loads
+        // Initialize
         document.addEventListener('DOMContentLoaded', function() {
-            // Initial ping
-            keepAlive();
+            filterScholarships('all');
             
-            // Set up interval for pinging every 5 minutes
-            setInterval(keepAlive, 5 * 60 * 1000);
-            
-            // Smooth scrolling for navigation links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            });
-        });
-
-        // Add magnetic cursor effect to scholarship cards
-        document.addEventListener('mouseover', function(e) {
-            if (e.target.closest('.scholarship-card')) {
-                const card = e.target.closest('.scholarship-card');
-                card.addEventListener('mousemove', function(e) {
-                    const rect = this.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    
-                    const centerX = rect.width / 2;
-                    const centerY = rect.height / 2;
-                    
-                    const angleX = (y - centerY) / 10;
-                    const angleY = (centerX - x) / 10;
-                    
-                    this.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) translateY(-10px)`;
-                });
-                
-                card.addEventListener('mouseleave', function() {
-                    this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(-10px)';
-                });
-            }
+            // Auto-ping to keep Render instance alive
+            setInterval(() => {
+                fetch(window.location.origin).catch(() => {});
+            }, 300000); // Every 5 minutes
         });
     </script>
+
+    <!-- Google AdSense Code - Add this after you get approved -->
+    <!-- 
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"></script>
+    -->
 </body>
 </html>
